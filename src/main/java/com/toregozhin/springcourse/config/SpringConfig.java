@@ -30,7 +30,7 @@ import java.util.Properties;
 @ComponentScan("com.toregozhin.springcourse")
 @PropertySource("classpath:hibernate.properties")
 @EnableTransactionManagement
-@EnableJpaRepositories("com.toregozhin.springcourse.repositoeries")
+@EnableJpaRepositories("com.toregozhin.springcourse.repositories")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
 
