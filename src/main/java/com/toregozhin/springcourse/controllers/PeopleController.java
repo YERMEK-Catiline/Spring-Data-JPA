@@ -1,11 +1,14 @@
 package com.toregozhin.springcourse.controllers;
 
 import com.toregozhin.springcourse.model.Person;
+import com.toregozhin.springcourse.services.ItemService;
 import com.toregozhin.springcourse.services.PeopleService;
+import com.toregozhin.springcourse.util.PersonValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,10 +18,19 @@ import javax.validation.Valid;
 public class PeopleController {
 
     private final PeopleService peopleService;
+    private final ItemService itemService;
+    private final PersonValidator personValidator;
 
     @Autowired
-    public PeopleController(PeopleService peopleService) {
+    public PeopleController(PeopleService peopleService, ItemService itemService, PersonValidator personValidator) {
         this.peopleService = peopleService;
+        this.itemService = itemService;
+        this.personValidator = personValidator;
+    }
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.addValidators(personValidator);
     }
 
     @GetMapping
