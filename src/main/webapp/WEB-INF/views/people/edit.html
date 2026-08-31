@@ -30,6 +30,13 @@
         </tr>
 
         <tr>
+            <td><label for="date_of_birth">Enter date of birth (dd.mm.yyyy): </label></td>
+            <td><input type="text" id="date_of_birth" th:field="*{dateOfBirth}"></td>
+            <td style="color: red" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Email Error</td>
+        </tr>
+
+
+        <tr>
             <td>
                 <button type="submit">Update!</button>
             </td>

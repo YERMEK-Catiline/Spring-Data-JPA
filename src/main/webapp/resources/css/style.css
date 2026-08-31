@@ -1,0 +1,14 @@
+<style>
+    .info-row {
+        display: flex;
+        margin-bottom: 8px;
+    }
+    .info-label {
+        width: 120px; /* Фиксированная ширина для всех заголовков */
+        font-weight: bold;
+        color: #555;
+    }
+    .info-value {
+        color: #000;
+    }
+</style>

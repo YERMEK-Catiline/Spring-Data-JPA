@@ -1,15 +1,33 @@
     <!DOCTYPE html>
-    <html lang="en" xmlns:th="http://www.thymeleaf.org" >
+    <html lang="en"  xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>Human</title>
+        <link rel="stylesheet" th:href="@{/resources/css/style.css}">
     </head>
+
     <body>
 
-    <p th:text="${person.getName() + ', ' + person.getAge()}">Person Name + Person Age</p>
-    <p th:text="${'Email address: ' + person.getEmail()}">Email address</p>
-    <p th:text="${'Person ID: ' + person.getId()}">Person ID</p>
-
+    <div class="info-row">
+        <div class="info-label">Person:</div>
+        <div class="info-value" th:text="${person.name}">Name</div>
+    </div>
+    <div class="info-row">
+        <div class="info-label">Age:</div>
+        <div class="info-value" th:text="${person.age}">Age</div>
+    </div>
+    <div class="info-row">
+        <div class="info-label">Email:</div>
+        <div class="info-value" th:text="${person.email}">Email</div>
+    </div>
+    <div class="info-row">
+        <div class="info-label">Person ID:</div>
+        <div class="info-value" th:text="${person.id}">ID</div>
+    </div>
+    <div class="info-row">
+        <div class="info-label">Date of birth:</div>
+        <div class="info-value" th:text="${person.dateOfBirth}">Date of birth</div>
+    </div>
 
     <br/>
 
@@ -27,3 +45,8 @@
     </html>
 
 
+    <!--    <p th:text="|Person: ${person.name}|">Person Name</p>-->
+    <!--    <p th:text="|Age: ${person.age}|">Age</p>-->
+    <!--    <p th:text="|Email address: ${person.email}|">Email address</p>-->
+    <!--    <p th:text="${'Person ID: ' + person.getId()}">Person ID</p>-->
+    <!--    <p th:text="|Date of birth: ${person.dateOfBirth}|">Date of birth</p>-->
