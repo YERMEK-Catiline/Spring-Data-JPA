@@ -51,4 +51,10 @@ public class Item {
     }
 
 
+    @Override
+    public String toString() {
+        return "ITEM " +
+                "ID = " + id +
+                ", ITEM NAME = '" + itemName;
+    }
 }

@@ -1,5 +1,6 @@
 package com.toregozhin.springcourse.controllers;
 
+import com.toregozhin.springcourse.dao.PersonDAO;
 import com.toregozhin.springcourse.model.Person;
 import com.toregozhin.springcourse.services.ItemService;
 import com.toregozhin.springcourse.services.PeopleService;
@@ -20,12 +21,14 @@ public class PeopleController {
     private final PeopleService peopleService;
     private final ItemService itemService;
     private final PersonValidator personValidator;
+    private final PersonDAO  personDAO;
 
     @Autowired
-    public PeopleController(PeopleService peopleService, ItemService itemService, PersonValidator personValidator) {
+    public PeopleController(PeopleService peopleService, ItemService itemService, PersonValidator personValidator, PersonDAO personDAO) {
         this.peopleService = peopleService;
         this.itemService = itemService;
         this.personValidator = personValidator;
+        this.personDAO = personDAO;
     }
 
     @InitBinder
@@ -35,7 +38,8 @@ public class PeopleController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("people", peopleService.findAll());
+//        model.addAttribute("people", peopleService.findAll());
+        personDAO.testNPlus1();
         return "people/index";
     }
 
