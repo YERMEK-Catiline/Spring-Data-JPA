@@ -24,13 +24,20 @@ public class PersonDAO {
 
         Session session = entityManager.unwrap(Session.class);
 
-        //Получить всех людей. Запрос
-        List<Person> people = entityManager.createQuery("select p from Person p", Person.class)
-                .getResultList();
+//        //Получить всех людей. Запрос
+//        List<Person> people = entityManager.createQuery("select p from Person p", Person.class)
+//                .getResultList();
+//
+//        //N запрасов к БД
+//        for(Person p : people) {
+//            System.out.println("Person " + p.getName() + " HAS: " + p.getItems());
+//        }
 
-        //N запрасов к БД
-        for(Person p : people) {
-            System.out.println("Person " + p.getName() + " HAS: " + p.getItems());
+        //Solution
+        List<Person> people = session.createQuery("SELECT p FROM Person p LEFT JOIN FETCH p.items")
+                .getResultList();
+        for (Person person : people) {
+            System.out.println("Person: " + person.getName() + " HAS " + person.getItems());
         }
     }
 
